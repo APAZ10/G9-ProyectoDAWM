@@ -90,8 +90,9 @@
         background-color: rgba(0,0,0,.5);
     }
 
-    &[filter-color="orange"]{
-        @include linear-gradient(rgba($black-color,.20), rgba(224, 23, 3, 0.6));
+    &[filter-color="dark"]{
+        // @include linear-gradient(rgba($black-color,.20), rgba(224, 23, 3, 0.6));
+        @include linear-gradient(rgba($black-color,.20), rgba(39, 5 ,17 , 0.6));
     }
 
     .container{
