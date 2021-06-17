@@ -1,0 +1,10 @@
+.align-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.btn-enviar {
+    width: 30%;
+    border-radius: 1rem;
+}

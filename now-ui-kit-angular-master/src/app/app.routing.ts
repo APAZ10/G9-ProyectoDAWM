@@ -3,21 +3,33 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ComponentsComponent } from './components/components.component';
-import { LandingComponent } from './examples/landing/landing.component';
-import { LoginComponent } from './examples/login/login.component';
-import { ProfileComponent } from './examples/profile/profile.component';
-import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
-import { ContactoComponent } from './examples/contacto/contacto.component'; //Agregado
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { EquipoComponent } from './components/equipo/equipo.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
 
 const routes: Routes =[
-    { path: '', redirectTo: 'index', pathMatch: 'full' },
-    { path: 'index',                component: ComponentsComponent },
-    { path: 'nucleoicons',          component: NucleoiconsComponent },
-    { path: 'examples/landing',     component: LandingComponent },
-    { path: 'examples/login',       component: LoginComponent },
-    { path: 'examples/profile',     component: ProfileComponent },
-    { path: 'examples/contacto',     component: ContactoComponent } //Agregado
+    { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+    {
+        path: 'inicio',
+        component: InicioComponent
+    },
+    {
+        path: 'contacto',
+        component: ContactoComponent
+    },
+    {
+        path: 'equipo',
+        component: EquipoComponent
+    },
+    {
+        path: 'noticias',
+        component: NoticiasComponent
+    },
+    {
+        path: '**',
+        component: InicioComponent
+    }
 ];
 
 @NgModule({
