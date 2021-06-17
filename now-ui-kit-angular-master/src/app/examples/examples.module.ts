@@ -10,6 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ExamplesComponent } from './examples.component';
+import { ContactoComponent } from './contacto/contacto.component'; //Agregado
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { ExamplesComponent } from './examples.component';
         })
     ],
     declarations: [
+        ContactoComponent, //Agregado
         LandingComponent,
         LoginComponent,
         ExamplesComponent,
