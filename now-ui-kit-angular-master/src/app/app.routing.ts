@@ -7,28 +7,42 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes =[
-    { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     {
-        path: 'inicio',
-        component: InicioComponent
-    },
-    {
-        path: 'contacto',
-        component: ContactoComponent
-    },
-    {
-        path: 'equipo',
-        component: EquipoComponent
-    },
-    {
-        path: 'noticias',
-        component: NoticiasComponent
+        path: '',
+        component: ClienteLayoutComponent,
+        children: [
+            { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+            {
+                path: 'inicio',
+                component: InicioComponent
+            },
+            {
+                path: 'contacto',
+                component: ContactoComponent
+            },
+            {
+                path: 'equipo',
+                component: EquipoComponent
+            },
+            {
+                path: 'noticias',
+                component: NoticiasComponent
+            },
+        ]
     },
     {
         path: 'admin',
-        loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+        component: AdminLayoutComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+            },
+        ]
     },
     {
         path: '**',

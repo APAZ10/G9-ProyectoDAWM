@@ -9,11 +9,15 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AdminModule } from './modules/admin/admin.module';
+import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        ClienteLayoutComponent,
+        AdminLayoutComponent
     ],
     imports: [
         BrowserAnimationsModule,
