@@ -35,7 +35,23 @@ export class InicioComponent implements OnInit {
       this.introJS.setOptions({
         steps: [
           { 
-            intro: "Hello world!"
+            intro: "Bienvenido a futfinder"
+          },
+          {
+            element: "#nav1",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav2",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav3",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav4",
+            intro: "This is a tooltip."
           },
           {
             element: "#popular",
