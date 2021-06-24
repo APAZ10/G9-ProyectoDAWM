@@ -27,6 +27,10 @@ const routes: Routes =[
         component: NoticiasComponent
     },
     {
+        path: 'admin',
+        loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    },
+    {
         path: '**',
         component: InicioComponent
     }

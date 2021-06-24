@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
         FormsModule,
         RouterModule,
         AppRoutingModule,
-        ComponentsModule
+        ComponentsModule,
+        AdminModule
     ],
     providers: [],
     bootstrap: [AppComponent]
