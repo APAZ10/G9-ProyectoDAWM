@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbAccordionConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import * as introJs from 'intro.js/intro.js';
 
 @Component({
   selector: 'app-inicio',
@@ -8,23 +9,64 @@ import { NgbAccordionConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 })
 export class InicioComponent implements OnInit {
 
+  introJS = introJs();
+
+  data : Date = new Date();
+
   establecimientos: any[] = [
       {
         tipo: "Parques",
-        img: "assets/img/soccer-field.png"
+        descripcion: "Buscar canchas para jugar en parques, áreas abiertas, etc"
       },
       {
         tipo: "Complejos Deportivos",
-        img: "assets/img/estadio.png"
+        descripcion: "Buscar canchas para jugar en complejos deportivos, establecimientos, etc"
       },
       {
         tipo: "Clubes",
-        img: "assets/img/club.png"
+        descripcion: "Buscar canchas en clubes privados, usualmente se necesita suscripción"
       }
   ]
 
-  constructor() {
+  constructor( private renderer : Renderer2, config: NgbAccordionConfig) {
+      config.closeOthers = true;
+      config.type = 'info';
+      this.introJS.setOptions({
+        steps: [
+          { 
+            intro: "Bienvenido a futfinder"
+          },
+          {
+            element: "#nav1",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav2",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav3",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#nav4",
+            intro: "This is a tooltip."
+          },
+          {
+            element: "#popular",
+            intro: "This is a tooltip."
+          }
+        ]
+      });
+  }
 
+  isWeekend(date: NgbDateStruct) {
+      const d = new Date(date.year, date.month - 1, date.day);
+      return d.getDay() === 0 || d.getDay() === 6;
+  }
+
+  isDisabled(date: NgbDateStruct, current: {month: number}) {
+      return date.month !== current.month;
   }
 
   ngOnInit() {
@@ -32,6 +74,7 @@ export class InicioComponent implements OnInit {
       navbar.classList.add('navbar-transparent');
       var body = document.getElementsByTagName('body')[0];
       body.classList.add('index-page');
+      this.introJS.start();
   }
   
   ngOnDestroy(){
