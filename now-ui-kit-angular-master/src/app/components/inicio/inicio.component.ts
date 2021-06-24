@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbAccordionConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import * as introJs from 'intro.js/intro.js';
 
 @Component({
   selector: 'app-inicio',
@@ -7,6 +8,9 @@ import { NgbAccordionConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+
+    introJS = introJs();
+
   data : Date = new Date();
 
   page = 4;
@@ -28,6 +32,17 @@ export class InicioComponent implements OnInit {
   constructor( private renderer : Renderer2, config: NgbAccordionConfig) {
       config.closeOthers = true;
       config.type = 'info';
+      this.introJS.setOptions({
+        steps: [
+          { 
+            intro: "Hello world!"
+          },
+          {
+            element: "#popular",
+            intro: "This is a tooltip."
+          }
+        ]
+      });
   }
   isWeekend(date: NgbDateStruct) {
       const d = new Date(date.year, date.month - 1, date.day);
@@ -43,6 +58,7 @@ export class InicioComponent implements OnInit {
       navbar.classList.add('navbar-transparent');
       var body = document.getElementsByTagName('body')[0];
       body.classList.add('index-page');
+      this.introJS.start();
   }
   
   ngOnDestroy(){
