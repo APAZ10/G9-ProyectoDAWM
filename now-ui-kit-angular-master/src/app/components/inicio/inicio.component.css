@@ -1,3 +1,64 @@
 .n-logo{
     max-width: 195px;
 }
+
+.search-container {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    color: black;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.btn:hover {
+    outline: none;
+}
+
+#search-bar {
+    width: 100%;
+    height: auto;
+    padding: 15px 10px 15px 10px;
+    border: none;
+    align-self: center;
+}
+
+#search-bar:focus {
+    outline: none;
+}
+
+.cards-container {
+    margin-top: 3rem;
+}
+
+.card-lugar {
+    height: 5rem;
+    background-color: white;
+    padding: 1rem 0 1rem 0;
+    margin: 0 5px 0 5px;
+    color: black;
+    border-radius: 10px;
+}
+
+.card-lugar:hover {
+    cursor: pointer;
+    background-color: lightslategray;
+}
+
+
+img {
+    padding: 0;
+    width: 80%;
+    height: auto;
+}

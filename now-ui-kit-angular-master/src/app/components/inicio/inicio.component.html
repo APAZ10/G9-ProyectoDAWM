@@ -9,6 +9,22 @@
                 <img class="n-logo" src="assets/img/now-logo.png" alt="">
                 <h1 class="h1-seo">Futfinder</h1>
                 <h3>Con la mente en el juego.</h3>
+                <div class="row justify-content-center search-container">
+                    <div class="col-md-1 col-2 btn-container">
+                        <button class="btn"><i class="bi bi-search fa-2x"></i></button>
+                    </div>
+                    <div class="col-md-11 col-10">
+                        <input id="search-bar" type="text" placeholder="¿Dónde quieres jugar hoy?">
+                    </div>
+                </div>
+                <div class="row cards-container">
+                    <div class="col-3 card-lugar" *ngFor="let data of establecimientos">
+                        <div class="row align-items-center">
+                            <p class="col-7">{{data.tipo}}</p>
+                            <img class="col-3" src="{{data.img}}"  alt="icono">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
