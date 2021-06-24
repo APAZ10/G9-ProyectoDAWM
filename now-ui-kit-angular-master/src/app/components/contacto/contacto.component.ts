@@ -44,6 +44,23 @@ export class ContactoComponent implements OnInit {
     
     });
 
+    previousBtn.addEventListener('click',()=>{
+      const previousBullet=bullets[currentsteps-2];
+      previousBullet.classList.remove('completed');
+      currentsteps--;
+      (nextBtn as any).disabled=false;
+      (finishBtn as any).disabled=true;
+      if(currentsteps==1){
+        (previousBtn as any).disabled=true;
+      }
+      content.innerText=`Step Number ${currentsteps}`
+    
+    });
+
+    finishBtn.addEventListener('click',()=>{
+      location.reload();
+    });
+
   }
   
   ngOnDestroy(){
