@@ -36,7 +36,7 @@ export class NoticiasComponent implements OnInit {
         let description=item.getElementsByTagName("description")[0].childNodes[0].nodeValue
         let link=item.getElementsByTagName("link")[0].childNodes[0].nodeValue
         let plantilla=`
-          <div class="col">
+          <div class="col" style="padding-block-end: 20px;">
               <div class="card h-100">
                 <div class="card-body">
                   <h5 class="card-title">${title}</h5>
