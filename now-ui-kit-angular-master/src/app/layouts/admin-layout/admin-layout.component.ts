@@ -13,4 +13,8 @@ export class AdminLayoutComponent implements OnInit {
     
   }
 
+  isSidebarActive(): boolean {
+    return true;
+  }
+
 }

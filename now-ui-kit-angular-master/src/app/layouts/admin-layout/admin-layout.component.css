@@ -75,3 +75,12 @@ a, a:hover, a:focus {
     color: #241910;
     background: #fff;
 }
+
+.btn-info {
+    background-color: #241910;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
