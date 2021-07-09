@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
-import { SidebarComponent } from 'app/shared/sidebar/sidebar.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 
 @NgModule({
   declarations: [
     ControlPanelComponent,
-    SidebarComponent
+    ReportesComponent
   ],
   imports: [
     CommonModule,
