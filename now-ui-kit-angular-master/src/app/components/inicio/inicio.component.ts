@@ -75,6 +75,47 @@ export class InicioComponent implements OnInit {
       var body = document.getElementsByTagName('body')[0];
       body.classList.add('index-page');
       this.introJS.start();
+      /*Agregando las canchas*/
+      fetch("../../../assets/data/canchas.json")
+      .then(response => response.json())
+      .then(data => {
+        
+        let listaCanchas = data.canchas;
+        for(let cancha of listaCanchas as any){
+          let zona = cancha.zona;
+          let sliderContainer = document.getElementById(zona.toLowerCase());
+          
+          let slide = document.createElement("ng-template");
+          let ngbAttr = document.createAttribute("ngbSlide");
+          ngbAttr.value = '';
+          slide.setAttributeNode(ngbAttr);
+          /*slide.className = 'ngbSlide';*/
+
+          let linkElement = document.createElement("a");
+          let linkSrc = document.createAttribute("href");
+          linkSrc.value = "https://google.com";
+          linkElement.setAttributeNode(linkSrc);
+
+          let imgSlide = document.createElement("img");
+          imgSlide.className = "d-block";
+          let imgSrc = document.createAttribute("src");
+          imgSrc.value = cancha.img;
+          imgSlide.setAttributeNode(imgSrc);
+
+          let infoDiv = document.createElement("div");
+          infoDiv.className = "carousel-caption d-none d-md-block";
+
+          let nameElement = document.createElement("h5");
+          nameElement.innerText = cancha.nombre;
+          
+          infoDiv.appendChild(nameElement);
+          linkElement.appendChild(imgSlide);
+          linkElement.appendChild(infoDiv);
+          slide.appendChild(linkElement);
+          sliderContainer.appendChild(slide);
+        }
+      })
+      .catch(console.error);
   }
   
   ngOnDestroy(){
