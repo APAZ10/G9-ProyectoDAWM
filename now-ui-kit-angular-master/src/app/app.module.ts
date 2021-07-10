@@ -11,6 +11,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CanchaModule } from './modules/cancha/cancha.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
         RouterModule,
         AppRoutingModule,
         ComponentsModule,
-        AdminModule
+        AdminModule,
+        CanchaModule
     ],
     providers: [],
     bootstrap: [AppComponent]
