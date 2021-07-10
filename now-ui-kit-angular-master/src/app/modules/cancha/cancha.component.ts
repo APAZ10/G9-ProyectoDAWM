@@ -7,7 +7,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     ngb-progressbar {
         margin-top: 5rem;
     }
-    `] //Eliminar
+    `], //Eliminar
+    styleUrls: ['./cancha.component.css']
 })
 
 export class CanchaComponent implements OnInit, OnDestroy {
