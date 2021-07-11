@@ -18,7 +18,8 @@
       "direccion":"Avenida León Febres Cordero km 14.5.",
       "img":"https://sportsolution.co/wp-content/uploads/2019/05/58e70fd4-af42-4139-be79-33724a0b0282.jpg",
       "likes":"0",
-      "precio":"$15 por hora."
+      "precio":"$15 por hora.",
+	  "coordenadas": [-2.0518852425773155, -79.9122328479301]
     },
     {
       "id":"03", 
