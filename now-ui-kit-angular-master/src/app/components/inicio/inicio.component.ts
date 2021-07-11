@@ -28,6 +28,11 @@ export class InicioComponent implements OnInit {
       }
   ]
 
+  canchasPopular: any[] = []
+  canchasNorte: any[] = []
+  canchasSur: any[] = []
+  canchasCentro: any[] = []
+
   constructor( private renderer : Renderer2, config: NgbAccordionConfig) {
       config.closeOthers = true;
       config.type = 'info';
@@ -75,6 +80,27 @@ export class InicioComponent implements OnInit {
       var body = document.getElementsByTagName('body')[0];
       body.classList.add('index-page');
       this.introJS.start();
+      /*Agregando las canchas*/
+      fetch("../../../assets/data/canchas.json")
+      .then(response => response.json())
+      .then(data => {
+        
+        let listaCanchas = data.canchas;
+        for(let cancha of listaCanchas as any){
+          let zona = cancha.zona;
+          let datos = {nombre: cancha.nombre, url: cancha.img};
+          if(cancha.zona==="Popular"){
+            this.canchasPopular.push(datos);
+          }else if(cancha.zona==="Norte"){
+            this.canchasNorte.push(datos);
+          }else if(cancha.zona==="Centro"){
+            this.canchasCentro.push(datos);
+          }else if(cancha.zona==="Sur"){
+            this.canchasSur.push(datos);
+          }
+        }
+      })
+      .catch(console.error);
   }
   
   ngOnDestroy(){

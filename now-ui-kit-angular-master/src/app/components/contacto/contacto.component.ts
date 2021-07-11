@@ -27,9 +27,11 @@ export class ContactoComponent implements OnInit {
     const finishBtn=document.getElementById("finish");
     const content=document.getElementById("content");
     const bullets=document.querySelectorAll(".bullet");
-    
+    const steps=document.getElementsByClassName("suggest")
+
     const max_steps=4;
     let currentsteps=1;
+    let index=1;
     
     nextBtn.addEventListener('click',()=>{
       const currentBullet=bullets[currentsteps-1];
@@ -40,6 +42,15 @@ export class ContactoComponent implements OnInit {
         (nextBtn as any).disabled=true;
         (finishBtn as any).disabled=false;
       }
+
+      if(index==0){
+        steps[index].classList.remove("d-none");
+      }else{
+        steps[index].classList.remove("d-none");
+        steps[index-1].classList.add("d-none");
+      }
+      index++;
+
       content.innerText=`Step Number ${currentsteps}`
     
     });
@@ -53,7 +64,18 @@ export class ContactoComponent implements OnInit {
       if(currentsteps==1){
         (previousBtn as any).disabled=true;
       }
-      content.innerText=`Step Number ${currentsteps}`
+
+      if(index==0){
+        steps[index].classList.remove("d-none");
+        steps[index+1].classList.add("d-none");
+      }else{
+        index-=2;
+        steps[index].classList.remove("d-none");
+        steps[index+1].classList.add("d-none");
+      }
+      index++;
+      
+      content.innerText=`Step indice ${index}`
     
     });
 
@@ -71,28 +93,3 @@ export class ContactoComponent implements OnInit {
   }
 
 }
-
-//intento
-/*
-const previousBtn=document.getElementById("previous");
-const nextBtn=document.getElementById("next");
-const finishBtn=document.getElementById("finish");
-const content=document.getElementById("content");
-const bullets=document.querySelectorAll(".bullet");
-
-const max_steps=4;
-let currentsteps=1;
-
-nextBtn.addEventListener('click',()=>{
-  const currentBullet=bullets[currentsteps-1];
-  currentBullet.classList.add('completed');
-  currentsteps++;
-  (previousBtn as any).disabled=false;
-  if(currentsteps==max_steps){
-    (nextBtn as any).disabled=true;
-    (finishBtn as any).disabled=false;
-  }
-  content.innerText=`Step Number ${currentsteps}`
-
-});
-*/

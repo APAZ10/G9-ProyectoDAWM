@@ -73,6 +73,14 @@ export class NoticiasComponent implements OnInit {
         }
       }
 
+      document.getElementById("restart-button").addEventListener("click",restart,false)
+      function restart(){
+        let lista=document.getElementsByClassName("col")
+        for(let element of lista as any){
+          element.classList.remove("d-none")
+        }
+      }
+
     })
     .catch(console.error);
     

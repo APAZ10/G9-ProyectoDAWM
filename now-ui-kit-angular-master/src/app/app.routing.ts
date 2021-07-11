@@ -9,6 +9,7 @@ import { EquipoComponent } from './components/equipo/equipo.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CanchaComponent } from './modules/cancha/cancha.component';
 
 const routes: Routes =[
     {
@@ -32,6 +33,10 @@ const routes: Routes =[
                 path: 'noticias',
                 component: NoticiasComponent
             },
+            {
+                path: 'cancha',
+                component: CanchaComponent
+            }
         ]
     },
     {

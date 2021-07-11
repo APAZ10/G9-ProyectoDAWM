@@ -5,12 +5,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CanchaModule } from './modules/cancha/cancha.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
         RouterModule,
         AppRoutingModule,
         ComponentsModule,
-        AdminModule
+        AdminModule,
+        CanchaModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

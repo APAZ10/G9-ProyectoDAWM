@@ -1,0 +1,9 @@
+.table-container {
+    padding: 1rem;
+}
+
+.btn-add {
+    background-color: #241910;
+    font-size: 120%;
+    margin-right: 2rem;
+}

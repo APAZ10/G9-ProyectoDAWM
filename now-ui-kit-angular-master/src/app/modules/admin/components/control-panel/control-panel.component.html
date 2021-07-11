@@ -1,1 +1,30 @@
-<p>control-panel works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-dark btn-add">Añadir</button>
+    </div>
+</div>
+<div class="table-container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Zona</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cancha of canchas">
+                <th scope="row">{{ cancha.id }}</th>
+                <td>{{ cancha.nombre }}</td>
+                <td>{{ cancha.zona }}</td>
+                <td>{{ cancha.precio }}</td>
+                <td>
+                    <button type="button" class="btn btn-success">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteCancha()">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>

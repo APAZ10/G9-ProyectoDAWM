@@ -37,6 +37,7 @@
     "intro.js": "^4.1.0",
     "jquery": "3.5.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
+    "leaflet": "^1.7.1",
     "ng2-nouislider": "1.8.2",
     "nouislider": "14.6.3",
     "popper.js": "1.16.1",
@@ -47,7 +48,7 @@
     "zone.js": "0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1100.4",
+    "@angular-devkit/build-angular": "^0.1100.4",
     "@angular/cli": "11.0.4",
     "@angular/compiler-cli": "11.0.4",
     "@angular/language-service": "11.0.4",
