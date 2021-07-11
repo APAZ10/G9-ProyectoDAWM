@@ -36,33 +36,35 @@ export class InicioComponent implements OnInit {
   constructor( private renderer : Renderer2, config: NgbAccordionConfig) {
       config.closeOthers = true;
       config.type = 'info';
-      this.introJS.setOptions({
-        steps: [
-          { 
-            intro: "Bienvenido a futfinder"
-          },
-          {
-            element: "#nav1",
-            intro: "This is a tooltip."
-          },
-          {
-            element: "#nav2",
-            intro: "This is a tooltip."
-          },
-          {
-            element: "#nav3",
-            intro: "This is a tooltip."
-          },
-          {
-            element: "#nav4",
-            intro: "This is a tooltip."
-          },
-          {
-            element: "#popular",
-            intro: "This is a tooltip."
-          }
-        ]
-      });
+      if(window.innerWidth>=992){
+        this.introJS.setOptions({
+          steps: [
+            { 
+              intro: "Bienvenido a futfinder"
+            },
+            {
+              element: "#nav1",
+              intro: "This is a tooltip."
+            },
+            {
+              element: "#nav2",
+              intro: "This is a tooltip."
+            },
+            {
+              element: "#nav3",
+              intro: "This is a tooltip."
+            },
+            {
+              element: "#nav4",
+              intro: "This is a tooltip."
+            },
+            {
+              element: "#popular",
+              intro: "This is a tooltip."
+            }
+          ]
+        });
+      }
   }
 
   isWeekend(date: NgbDateStruct) {
