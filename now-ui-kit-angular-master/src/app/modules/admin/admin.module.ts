@@ -7,6 +7,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { BarComponent } from './components/reportes/graficos/bar/bar.component';
 import { PieComponent } from './components/reportes/graficos/pie/pie.component';
 import { ScatterComponent } from './components/reportes/graficos/scatter/scatter.component';
+import { EditCanchaComponent } from './components/edit-cancha/edit-cancha.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ScatterComponent } from './components/reportes/graficos/scatter/scatter
     ReportesComponent,
     BarComponent,
     PieComponent,
-    ScatterComponent
+    ScatterComponent,
+    EditCanchaComponent
   ],
   imports: [
     CommonModule,

@@ -12,23 +12,16 @@ export class CanchasService {
     private http: HttpClient
   ) { }
 
-  list(): Observable<any> {
-    return this.http.get<any>("assets/data/canchas.json");
+  list(): Observable<Cancha[]> {
+    return this.http.get<Cancha[]>("http://localhost:3000/cancha");
   }
 
-  delete(id: string): boolean {
-    let canchas: Cancha[];
-    const subscripcion = this.list();
-    subscripcion.subscribe(data => {
-      canchas = data.canchas;
-    });
-    for(let index = 0; index < canchas.length; index++) {
-      if (canchas[index].id === id) {
-        canchas.splice(index, 1);
-        return true;
-      }
-    }
-    return false;
+  delete(id: string): Observable<Cancha> {
+    return this.http.delete<Cancha>(`http://localhost:3000/cancha/${id}`);
+  }
+
+  add(cancha: Cancha): Observable<Cancha> {
+    return this.http.post<Cancha>("http://localhost:3000/cancha/add", cancha);
   }
 
 }

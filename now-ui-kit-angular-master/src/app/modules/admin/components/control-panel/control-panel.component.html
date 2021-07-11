@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row justify-content-end">
-        <button type="button" class="btn btn-dark btn-add">Añadir</button>
+        <button type="button" class="btn btn-dark btn-add" (click)="openEditCancha(null)">Añadir</button>
     </div>
 </div>
 <div class="table-container">
@@ -19,10 +19,10 @@
                 <th scope="row">{{ cancha.id }}</th>
                 <td>{{ cancha.nombre }}</td>
                 <td>{{ cancha.zona }}</td>
-                <td>{{ cancha.precio }}</td>
+                <td>${{ cancha.precio }} por hora.</td>
                 <td>
                     <button type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-danger" (click)="deleteCancha()">Eliminar</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteCancha(cancha.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
