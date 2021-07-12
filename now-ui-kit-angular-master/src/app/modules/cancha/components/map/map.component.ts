@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     .then(data => {
       let listaCanchas = data.canchas;
       for(let cancha of listaCanchas as any){
-        if(("/"+cancha.id)===window.location.pathname){
+        if(("/canchas/"+cancha.id)===window.location.pathname){
           const lon = cancha.coordenadas[0];
           const lat = cancha.coordenadas[1];
           this.map = L.map('map', {

@@ -35,7 +35,7 @@ const routes: Routes =[
                 component: NoticiasComponent
             },
             {
-                path: '**',
+                path: 'canchas/:id',
                 component: CanchaComponent
             }
         ]
