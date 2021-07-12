@@ -70,11 +70,18 @@
 img {
     padding: 0;
     width: 100%;
-    height: auto;
+    max-height: 300px;
 }
 
 h1 {
     font-size: 2.8em;
     text-transform: uppercase;
     font-weight: 300;
+}
+h4 {
+    font-weight: bolder;
+    padding: 10px;
+}
+main div.section{
+    padding: 35px;
 }
