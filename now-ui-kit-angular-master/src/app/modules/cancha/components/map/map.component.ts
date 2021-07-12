@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit} from '@angular/core';
 import * as L from 'leaflet';
 
-const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
+/*const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
 const iconUrl = 'assets/img/marker-icon.png';
 const shadowUrl = 'assets/img/marker-shadow.png';
 //const shadowUrl = '../../../../../assets/img/marker-shadow.png';
@@ -15,7 +15,7 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
-L.Marker.prototype.options.icon = iconDefault;
+L.Marker.prototype.options.icon = iconDefault;*/
 
 
 @Component({
@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     .then(data => {
       let listaCanchas = data.canchas;
       for(let cancha of listaCanchas as any){
-        if(cancha.nombre==="Cancha de fútbol: La Fortaleza"){
+        if(("/"+cancha.id)===window.location.pathname){
           const lon = cancha.coordenadas[0];
           const lat = cancha.coordenadas[1];
           this.map = L.map('map', {
@@ -70,7 +70,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     .catch(console.error);
   }
 
-  constructor() { }
+  constructor() {
+    //console.log(' pathname => ' + window.location.pathname);
+   }
 
   ngOnInit(): void {
   }

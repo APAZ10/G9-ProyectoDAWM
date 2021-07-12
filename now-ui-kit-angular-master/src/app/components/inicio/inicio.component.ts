@@ -90,7 +90,7 @@ export class InicioComponent implements OnInit {
         let listaCanchas = data.canchas;
         for(let cancha of listaCanchas as any){
           let zona = cancha.zona;
-          let datos = {nombre: cancha.nombre, url: cancha.img};
+          let datos = {nombre: cancha.nombre, url: cancha.img, id: cancha.id};
           if(cancha.zona==="Popular"){
             this.canchasPopular.push(datos);
           }else if(cancha.zona==="Norte"){

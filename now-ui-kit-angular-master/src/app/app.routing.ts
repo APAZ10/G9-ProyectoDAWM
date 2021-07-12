@@ -34,7 +34,7 @@ const routes: Routes =[
                 component: NoticiasComponent
             },
             {
-                path: 'cancha',
+                path: '**',
                 component: CanchaComponent
             }
         ]
@@ -48,11 +48,11 @@ const routes: Routes =[
                 loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
             },
         ]
-    },
+    }/*,
     {
         path: '**',
         component: InicioComponent
-    }
+    }*/
 ];
 
 @NgModule({
