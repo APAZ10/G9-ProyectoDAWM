@@ -109,6 +109,39 @@
       "likes":58,
       "precio":"$40 por hora.",
       "coordenadas": [-2.1540715908052164, -79.89885860694694]
+    },
+    {
+      "id":"fertiza", 
+      "nombre":"Canchas La Fertiza", 
+      "zona":"Sur", 
+      "descripcion":"Canchas de fútbol de césped natural, tamaño reglamentario para 11 jugadores.",
+      "direccion":"Arq. Andrés Efraín Alava Mestanza 111.",
+      "img":"https://i.postimg.cc/przwXbbp/11.png",
+      "likes":12,
+      "precio":"$20 por hora.",
+      "coordenadas": [-2.258118834951404, -79.89882243010302]
+    },
+    {
+      "id":"astillero", 
+      "nombre":"La Canchita del Astillero", 
+      "zona":"Sur", 
+      "descripcion":"Cancha de fútbol 5, sintética, con academia de fútbol hasta 20 años.",
+      "direccion":"Los Esteros Y Jacinto Rodriguez de Bejarano.",
+      "img":"https://i.postimg.cc/T3yL3CNn/12.png",
+      "likes":3,
+      "precio":"$15 por hora.",
+      "coordenadas": [-2.2448890511392547, -79.90314204742461]
+    },
+    {
+      "id":"tarjetita", 
+      "nombre":"Cancha Sintética Tarjetita Intriago", 
+      "zona":"Sur", 
+      "descripcion":"Cancha de fútbol de hasta 8 jugadores, con iluminarias, césped sintético y alquiler de eventos.",
+      "direccion":"Cooperativa Pedregal, Guasmo Norte.",
+      "img":"https://i.postimg.cc/LXqH9y3G/13.png",
+      "likes":8,
+      "precio":"$18 por hora.",
+      "coordenadas": [-2.2601372807690434, -79.87588435278707]
     }
   ]
 }
