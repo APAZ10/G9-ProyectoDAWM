@@ -39,7 +39,7 @@ export class MapComponent implements OnInit, AfterViewInit {
           const lat = cancha.coordenadas[1];
           this.map = L.map('map', {
             center: [ lon, lat ],
-            zoom: 18
+            zoom: 17
           });
           const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,

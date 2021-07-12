@@ -21,7 +21,6 @@ export class ContactoComponent implements OnInit {
     navbar.classList.add('navbar-transparent');
 
     //Prueba
-    
     const previousBtn=document.getElementById("previous");
     const nextBtn=document.getElementById("next");
     const finishBtn=document.getElementById("finish");
@@ -34,6 +33,8 @@ export class ContactoComponent implements OnInit {
     let index=1;
     
     nextBtn.addEventListener('click',()=>{
+      let variable = (<HTMLInputElement>(document.getElementsByClassName("cajaTexto")[index-1])).value;
+      if(variable != ""){
       const currentBullet=bullets[currentsteps-1];
       currentBullet.classList.add('completed');
       currentsteps++;
@@ -52,7 +53,7 @@ export class ContactoComponent implements OnInit {
       index++;
 
       content.innerText=`Step Number ${currentsteps}`
-    
+      }
     });
 
     previousBtn.addEventListener('click',()=>{

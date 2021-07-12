@@ -40,15 +40,15 @@ export class InicioComponent implements OnInit {
         this.introJS.setOptions({
           steps: [
             { 
-              intro: "Bienvenido a futfinder"
+              intro: "Bienvenido a FUTFINDER"
             },
             {
               element: "#nav1",
-              intro: "This is a tooltip."
+              intro: "Página de Inicio"
             },
             {
               element: "#nav2",
-              intro: "This is a tooltip."
+              intro: "Noticias sobre fútbol"
             },
             {
               element: "#nav3",
@@ -60,7 +60,7 @@ export class InicioComponent implements OnInit {
             },
             {
               element: "#popular",
-              intro: "This is a tooltip."
+              intro: "Navegar por las canchas"
             }
           ]
         });
@@ -91,9 +91,10 @@ export class InicioComponent implements OnInit {
         for(let cancha of listaCanchas as any){
           let zona = cancha.zona;
           let datos = {nombre: cancha.nombre, url: cancha.img, id: cancha.id};
-          if(cancha.zona==="Popular"){
+          if(cancha.likes > 10){
             this.canchasPopular.push(datos);
-          }else if(cancha.zona==="Norte"){
+          }
+          if(cancha.zona==="Norte"){
             this.canchasNorte.push(datos);
           }else if(cancha.zona==="Centro"){
             this.canchasCentro.push(datos);

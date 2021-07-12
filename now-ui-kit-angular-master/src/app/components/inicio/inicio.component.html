@@ -7,8 +7,8 @@
         <div class="container">
             <div class="content-center brand">
                 <img class="n-logo" src="assets/img/now-logo.png" alt="">
-                <h1 class="h1-seo">Futfinder</h1>
-                <h3>Con la mente en el juego.</h3>
+                <h1>Futfinder</h1>
+                <h3>Con la mente en el juego</h3>
                 <div class="row justify-content-center search-container">
                     <div class="col-md-1 col-2 btn-container">
                         <button class="btn"><i class="bi bi-search fa-2x"></i></button>
@@ -37,25 +37,13 @@
                 <div class="row justify-content-center">
                     <div class="col-8">
                         <ngb-carousel  id="popular">
-                            <ng-template ngbSlide>
-                                <a href="">
-                                    <img class="d-block" src="assets/img/bg5.jpg" alt="First slide">
+                            <ng-template *ngFor="let datos of canchasPopular" ngbSlide>
+                                <a href="/{{datos.id}}">
+                                    <img class="d-block" src="{{datos.url}}" alt="">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>Nature, United States</h5>
+                                        <h5>{{datos.nombre}}</h5>
                                     </div>
                                 </a>
-                            </ng-template>
-                            <ng-template ngbSlide>
-                                <img style="width:1440" class="d-block" src="assets/img/bg5.jpg" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Somewhere Beyond, United States</h5>
-                                </div>
-                            </ng-template>
-                            <ng-template ngbSlide>
-                                <img class="d-block" src="assets/img/bg5.jpg" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Yellowstone National Park, United States</h5>
-                                </div>
                             </ng-template>
                         </ngb-carousel>
                     </div>
