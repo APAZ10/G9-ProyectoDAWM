@@ -14,8 +14,18 @@ router.get('/', function (req, res) {
         })
 });
 
+router.get('/:id', function (req, res) {
+    controller.getCancha(req.params.id)
+        .then((cancha) => {
+            response.success(req, res, cancha, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Unexpected error', 500, e);
+        })
+});
+
 router.post('/add', function (req, res) {
-    controller.addCancha(req.body.cancha)
+    controller.addCancha(req.body)
         .then((cancha) => {
             response.success(req, res, cancha, 201);
         })
@@ -24,17 +34,17 @@ router.post('/add', function (req, res) {
         });
 });
 
-router.patch('/:id', function (req, res) {
-    controller.updateCancha(req.params.id, req.body.cancha)
-        .then(() => {
-            response.success(req, res, 'Cancha actualizada', 200);
+router.patch('/update/:id', function (req, res) {
+    controller.updateCancha(req.params.id, req.body)
+        .then((cancha) => {
+            response.success(req, res, cancha, 200);
         })
         .catch(e => {
             response.error(req, res, 'Error interno', 500, e);
         });
 });
 
-router.delete('/:id', function (req, res) {
+router.delete('/delete/:id', function (req, res) {
     controller.deleteCancha(req.params.id)
         .then((eliminado) => {
             response.success(req, res, eliminado, 200);

@@ -7,6 +7,13 @@ function getCanchas() {
     })
 }
 
+function getCancha(id) {
+    return new Promise(async (resolve, reject) => {
+        const cancha = await store.get(id)
+        resolve(cancha)
+    })
+}
+
 function addCancha(cancha) {
     return new Promise(async (resolve, reject) => {
         if (!cancha) {
@@ -40,6 +47,7 @@ function deleteCancha(id) {
 
 module.exports = {
     getCanchas: getCanchas,
+    getCancha: getCancha,
     addCancha: addCancha,
     updateCancha: updateCancha,
     deleteCancha: deleteCancha,
