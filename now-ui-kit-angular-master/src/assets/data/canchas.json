@@ -56,6 +56,18 @@
       "coordenadas": [-2.0956529735715588, -79.95452454557447]
     },
     {
+      "id":"citygol", 
+      "nombre":"Canchas City Gol", 
+      "zona":"Norte", 
+      "descripcion":"Campo de fútbol",
+      "direccion":"Autopista Terminal Terrestre km 6.6",
+      "img":"https://scontent.fgye6-1.fna.fbcdn.net/v/t1.6435-9/51730811_367706660676865_1415001027484057600_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=e3f864&_nc_eui2=AeGNyfaXO2sHmB1y6PJ59BJVjMTYUuGHVreMxNhS4YdWt_VfVXeSYjQrGrGhkuLLCxnKoxn8-O9nWsKK2-R-mfiY&_nc_ohc=9DXvvHcdCegAX8ZXpCA&_nc_ht=scontent.fgye6-1.fna&oh=dec72fa9351e12b244f65ddd03596d89&oe=60F127A0",
+      "likes":0,
+      "precio":"$20 por hora.",
+      "coordenadas": [-2.0805622849904024, -79.89595567447262]
+
+    },
+    {
       "id":"hoolligans", 
       "nombre":"Hoolligans Futbol Club", 
       "zona":"Centro", 
