@@ -64,7 +64,7 @@ export class InicioComponent implements OnInit {
             }
           ]
         });
-      }
+      }   
   }
 
   isWeekend(date: NgbDateStruct) {

@@ -6,7 +6,9 @@
         </div>
         <div class="container">
             <div class="content-center brand">
-                <img class="n-logo" src="assets/img/now-logo.png" alt="">
+                <div class="row justify-content-center">
+                    <img class="n-logo d-none d-sm-block" src="assets/img/now-logo.png" alt="">
+                </div>
                 <h1>Futfinder</h1>
                 <h3>Con la mente en el juego</h3>
                 <div class="row justify-content-center search-container">
@@ -114,4 +116,10 @@
             </div>
         </div>
     </main>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright:
+          <a class="text-dark" [routerLink]="['/inicio']">Futfinder</a>
+        </div>
+    </footer>
 </div>
