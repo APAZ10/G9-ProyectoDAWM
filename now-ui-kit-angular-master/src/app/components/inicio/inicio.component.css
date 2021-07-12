@@ -71,7 +71,7 @@
 img {
     padding: 0;
     width: 100%;
-    height: auto;
+    max-height: 300px;
 }
 
 h1 {
@@ -79,7 +79,10 @@ h1 {
     text-transform: uppercase;
     font-weight: 300;
 }
-
-footer{
-    color: white;
+h4 {
+    font-weight: bolder;
+    padding: 10px;
+}
+main div.section{
+    padding: 35px;
 }
