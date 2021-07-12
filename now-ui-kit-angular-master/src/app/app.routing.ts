@@ -10,6 +10,7 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { CanchaComponent } from './modules/cancha/cancha.component';
+import { EditCanchaComponent } from './modules/admin/components/edit-cancha/edit-cancha.component';
 
 const routes: Routes =[
     {
@@ -46,7 +47,7 @@ const routes: Routes =[
             {
                 path: '',
                 loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
-            },
+            }
         ]
     }/*,
     {

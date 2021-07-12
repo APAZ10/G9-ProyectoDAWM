@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportesComponent implements OnInit {
 
+  grafico: string;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleGraphic(type: string) {
+    this.grafico = type;
   }
 
 }
