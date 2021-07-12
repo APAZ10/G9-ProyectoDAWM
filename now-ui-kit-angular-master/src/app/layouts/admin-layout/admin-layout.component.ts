@@ -10,11 +10,13 @@ export class AdminLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+    document.getElementById("sidebarCollapse").addEventListener("click", function() {
+      document.getElementById("sidebar").classList.toggle("active");
+    });
   }
 
-  isSidebarActive(): boolean {
-    return true;
+  toggleSidebar() {
+    
   }
 
 }

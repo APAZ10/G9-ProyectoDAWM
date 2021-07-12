@@ -18,13 +18,22 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
+.hide {
+    display: none;
+}
+
 
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
+    }
+    
+    .hide {
+        display: flex;
     }
 }
 

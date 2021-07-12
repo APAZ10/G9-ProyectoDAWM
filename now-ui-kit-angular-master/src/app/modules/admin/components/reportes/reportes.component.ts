@@ -16,7 +16,6 @@ export class ReportesComponent implements OnInit {
 
   toggleGraphic(type: string) {
     this.grafico = type;
-    console.log(this.grafico);
   }
 
 }

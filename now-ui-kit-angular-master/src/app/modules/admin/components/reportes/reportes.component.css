@@ -28,5 +28,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: max-content;
     padding-top: 2rem;
+    margin: 0;
 }

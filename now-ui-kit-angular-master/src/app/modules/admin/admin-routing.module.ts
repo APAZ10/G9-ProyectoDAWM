@@ -9,12 +9,14 @@ const routes: Routes = [
   {
     path: 'control-panel',
     component: ControlPanelComponent,
-    children: [
-      {
-        path: 'edit',
-        component: EditCanchaComponent
-      }
-    ]
+  },
+  {
+    path: 'control-panel/edit',
+    component: EditCanchaComponent
+  },
+  {
+    path: 'control-panel/edit/:id',
+    component: EditCanchaComponent
   },
   {
     path: 'reportes',

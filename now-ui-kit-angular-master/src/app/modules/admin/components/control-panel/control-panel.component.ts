@@ -37,9 +37,9 @@ export class ControlPanelComponent implements OnInit {
 
   openEditCancha(cancha: Cancha): void {
     if (cancha === undefined || cancha === null) {
-      this.router.navigate(['admin', 'control-panel', 'edit'])
+      this.router.navigate(['admin', 'control-panel', 'edit']);
     } else {
-      this.router.navigate(['admin', 'control-panel', 'edit', `${cancha.id}`])
+      this.router.navigate(['admin', 'control-panel', 'edit', `${cancha.id}`]);
     }
   }
 

@@ -1,4 +1,7 @@
 <div class="container-fluid">
+    <div class="row justify-content-center mt-3">
+        <h2>Canchas</h2>
+    </div>
     <div class="row justify-content-end">
         <button type="button" class="btn btn-dark btn-add" (click)="openEditCancha(null)">Añadir</button>
     </div>
@@ -21,7 +24,7 @@
                 <td>{{ cancha.zona }}</td>
                 <td>${{ cancha.precio }} por hora.</td>
                 <td>
-                    <button type="button" class="btn btn-success">Editar</button>
+                    <button type="button" class="btn btn-success" (click)="openEditCancha(cancha)">Editar</button>
                     <button type="button" class="btn btn-danger" (click)="deleteCancha(cancha.id)">Eliminar</button>
                 </td>
             </tr>
