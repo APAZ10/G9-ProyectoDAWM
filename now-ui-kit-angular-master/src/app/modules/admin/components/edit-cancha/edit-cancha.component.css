@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
 
 .edit-card {
@@ -18,12 +19,5 @@
     .edit-card {
         width: 100%;
         max-width: 100%;
-    }
-}
-
-@media screen and (max-width: 770px) {
-    .edit-card {
-        width: fit-content;
-        max-width: 75%;
     }
 }

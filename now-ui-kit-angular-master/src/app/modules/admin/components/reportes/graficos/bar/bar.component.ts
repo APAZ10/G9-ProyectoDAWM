@@ -13,7 +13,7 @@ export class BarComponent implements OnInit {
   private svg;
   private margin = 50;
   private width = 750 - (this.margin * 2);
-  private height = 400 - (this.margin * 2);
+  private height = 500 - (this.margin * 2);
 
   constructor(
     private canchaService: CanchasService
@@ -42,7 +42,6 @@ export class BarComponent implements OnInit {
 
   private drawBars(data: any[]): void {
     // Create the X-axis band scale
-    console.log(data);
     const x = d3.scaleBand()
     .range([0, this.width])
     .domain(data.map(d => d.nombre))
