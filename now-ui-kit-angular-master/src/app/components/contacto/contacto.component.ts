@@ -24,6 +24,7 @@ export class ContactoComponent implements OnInit {
     const previousBtn=document.getElementById("previous");
     const nextBtn=document.getElementById("next");
     const finishBtn=document.getElementById("finish");
+    const enviarBtn=document.getElementById("btnEnviar");
     const content=document.getElementById("content");
     const bullets=document.querySelectorAll(".bullet");
     const steps=document.getElementsByClassName("suggest")
@@ -81,6 +82,10 @@ export class ContactoComponent implements OnInit {
     });
 
     finishBtn.addEventListener('click',()=>{
+      location.reload();
+    });
+
+    enviarBtn.addEventListener('click',()=>{
       location.reload();
     });
 
