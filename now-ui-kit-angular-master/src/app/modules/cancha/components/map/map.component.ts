@@ -47,23 +47,9 @@ export class MapComponent implements OnInit, AfterViewInit {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           });
           tiles.addTo(this.map);
-          const marker = L.marker([lat, lon]);
-          const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
-          const iconUrl = 'assets/img/marker-icon.png';
-          const shadowUrl = 'assets/img/marker-shadow.png';
-          const iconDefault = L.icon({
-            iconRetinaUrl,
-            iconUrl,
-            shadowUrl,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            tooltipAnchor: [16, -28],
-            shadowSize: [41, 41]
-          });
-          marker.options.icon = iconDefault;
-          console.log(marker);
-          marker.addTo(this.map);
+          var marker=L.marker([lon, lat]).addTo(this.map);
+          var popup=marker.bindPopup("<b>Es aqui!</b>");
+          popup.openPopup();
         }
       }
     })
