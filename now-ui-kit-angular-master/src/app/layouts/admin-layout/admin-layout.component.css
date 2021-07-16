@@ -65,6 +65,11 @@ a, a:hover, a:focus {
     background: #101b24;
 }
 
+.sidebar-header:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 #sidebar ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #241910;
