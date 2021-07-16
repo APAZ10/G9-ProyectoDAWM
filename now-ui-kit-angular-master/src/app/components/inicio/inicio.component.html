@@ -7,20 +7,20 @@
         <div class="container">
             <div class="content-center brand">
                 <div class="row justify-content-center">
-                    <img class="n-logo d-none d-sm-block" src="assets/img/now-logo.png" alt="">
+                    <img class="n-logo" src="assets/img/now-logo.png" alt="">
                 </div>
                 <h1>Futfinder</h1>
                 <h3>Con la mente en el juego</h3>
                 <div class="row justify-content-center search-container">
-                    <div class="col-md-1 col-2 btn-container">
+                    <div class="col-md-1 col-2 btn-container d-none d-sm-block">
                         <button class="btn"><i class="bi bi-search fa-2x"></i></button>
                     </div>
-                    <div class="col-md-11 col-10">
+                    <div class="col-md-11 col-10 d-sm-block d-none">
                         <input id="search-bar" type="text" placeholder="¿Dónde quieres jugar hoy?">
                     </div>
                 </div>
                 <div class="row cards-container">
-                    <div class="col-md-3 col-10 card-lugar" *ngFor="let data of establecimientos">
+                    <div class="col-md-3 col-10 card-lugar d-none d-sm-block" *ngFor="let data of establecimientos">
                         <div class="row justify-content-center">
                             <h6 class="col-12">{{data.tipo}}</h6>
                             <p class="col-12">{{data.descripcion}}</p>
