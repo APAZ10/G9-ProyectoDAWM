@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
         
         let listaCanchas = data.canchas;
         for(let cancha of listaCanchas as any){
-          if(("/"+cancha.id)===window.location.pathname){
+          if(("/canchas/"+cancha.id)===window.location.pathname){
             document.getElementById("nombre").textContent=cancha.nombre
             document.getElementById("direccion").textContent=cancha.direccion
             document.getElementById("precio").textContent=cancha.precio

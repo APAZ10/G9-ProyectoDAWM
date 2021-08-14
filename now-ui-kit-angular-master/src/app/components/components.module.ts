@@ -11,6 +11,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { EquipoComponent } from './equipo/equipo.component';
 import { NoticiasComponent } from './noticias/noticias.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
         InicioComponent,
         ContactoComponent,
         EquipoComponent,
-        NoticiasComponent
+        NoticiasComponent,
+        PageNotFoundComponent
     ],
     exports:[ ComponentsComponent ]
 })

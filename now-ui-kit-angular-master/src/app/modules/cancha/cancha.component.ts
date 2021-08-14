@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-cancha',
@@ -13,9 +14,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 export class CanchaComponent implements OnInit, OnDestroy {
 
-    constructor() { }
+    constructor(
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit(): void {
+        const id = this.route.snapshot.paramMap.get('id');
+        console.log(id);
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('landing-page');
         var navbar = document.getElementsByTagName('nav')[0];

@@ -11,6 +11,7 @@ import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { CanchaComponent } from './modules/cancha/cancha.component';
 import { EditCanchaComponent } from './modules/admin/components/edit-cancha/edit-cancha.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes =[
     {
@@ -35,7 +36,7 @@ const routes: Routes =[
                 component: NoticiasComponent
             },
             {
-                path: '**',
+                path: 'canchas/:id',
                 component: CanchaComponent
             }
         ]
@@ -49,11 +50,11 @@ const routes: Routes =[
                 loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
             }
         ]
-    }/*,
+    },
     {
         path: '**',
-        component: InicioComponent
-    }*/
+        component: PageNotFoundComponent
+    }
 ];
 
 @NgModule({

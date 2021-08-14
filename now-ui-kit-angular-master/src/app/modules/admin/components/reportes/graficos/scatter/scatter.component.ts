@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cancha } from 'app/interfaces/cancha';
+import { CanchasService } from 'app/services/canchas/canchas.service';
 import * as d3 from 'd3';
 
 @Component({
@@ -8,23 +10,26 @@ import * as d3 from 'd3';
 })
 export class ScatterComponent implements OnInit {
 
-  private data = [
-    {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
-    {"Framework": "React", "Stars": "150793", "Released": "2013"},
-    {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
-    {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
-    {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
-  ];
+  private data: Cancha[];
   private svg;
   private margin = 50;
   private width = 750 - (this.margin * 2);
-  private height = 400 - (this.margin * 2);
+  private height = 500 - (this.margin * 2);
 
-  constructor() { }
+  constructor(
+    private canchaService: CanchasService
+  ) { }
 
   ngOnInit(): void {
-    this.createSvg();
-    this.drawPlot();
+    this.fetchCanchas();
+  }
+
+  private fetchCanchas(): void {
+    this.canchaService.list().subscribe(data => {
+      this.data = data;
+      this.createSvg();
+      this.drawPlot();
+    });
   }
 
   private createSvg(): void {
@@ -39,7 +44,7 @@ export class ScatterComponent implements OnInit {
   private drawPlot(): void {
     // Add X axis
     const x = d3.scaleLinear()
-    .domain([2009, 2017])
+    .domain([0, 50])
     .range([ 0, this.width ]);
     this.svg.append("g")
     .attr("transform", "translate(0," + this.height + ")")
@@ -47,7 +52,7 @@ export class ScatterComponent implements OnInit {
 
     // Add Y axis
     const y = d3.scaleLinear()
-    .domain([0, 200000])
+    .domain([0, 100])
     .range([ this.height, 0]);
     this.svg.append("g")
     .call(d3.axisLeft(y));
@@ -58,8 +63,8 @@ export class ScatterComponent implements OnInit {
     .data(this.data)
     .enter()
     .append("circle")
-    .attr("cx", d => x(d.Released))
-    .attr("cy", d => y(d.Stars))
+    .attr("cx", d => x(d.precio))
+    .attr("cy", d => y(d.likes))
     .attr("r", 7)
     .style("opacity", .5)
     .style("fill", "#69b3a2");
@@ -69,9 +74,23 @@ export class ScatterComponent implements OnInit {
     .data(this.data)
     .enter()
     .append("text")
-    .text(d => d.Framework)
-    .attr("x", d => x(d.Released))
-    .attr("y", d => y(d.Stars))
+    .attr("x", d => x(d.precio))
+    .attr("y", d => y(d.likes))
+
+    this.svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", this.width)
+    .attr("y", this.height + 32)
+    .text("Precio");
+
+    this.svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", "-1.2em")
+    .attr("dx", "-1em")
+    .text("Likes");
   }
 
 }
