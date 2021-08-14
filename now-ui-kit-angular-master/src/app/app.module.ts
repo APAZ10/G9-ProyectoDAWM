@@ -13,13 +13,15 @@ import { AdminModule } from './modules/admin/admin.module';
 import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { CanchaModule } from './modules/cancha/cancha.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         ClienteLayoutComponent,
-        AdminLayoutComponent
+        AdminLayoutComponent,
+        LoginComponent
     ],
     imports: [
         BrowserAnimationsModule,
