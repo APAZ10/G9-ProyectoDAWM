@@ -12,6 +12,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { CanchaComponent } from './modules/cancha/cancha.component';
 import { EditCanchaComponent } from './modules/admin/components/edit-cancha/edit-cancha.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes =[
     {
@@ -34,6 +35,10 @@ const routes: Routes =[
             {
                 path: 'noticias',
                 component: NoticiasComponent
+            },
+            {
+                path: 'login',
+                component: LoginComponent
             },
             {
                 path: 'canchas/:id',
