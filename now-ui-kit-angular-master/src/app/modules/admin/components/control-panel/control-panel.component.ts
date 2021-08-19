@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cancha } from 'app/interfaces/cancha';
 import { CanchasService } from 'app/services/canchas/canchas.service';

@@ -68,26 +68,24 @@ export class EditCanchaComponent implements OnInit {
       zona: this.form.value.zona,
       direccion: this.form.value.direccion,
       descripcion: this.form.value.descripcion,
-      img: this.form.value.img,
+      imgUrl: this.form.value.img,
       likes: this.form.value.likes,
-      precio: this.form.value.precio,
-      coordenadas: [
-        this.form.value.coordenadaX,
-        this.form.value.coordenadaY
-      ]
+      precio: parseFloat(this.form.value.precio),
+      coordenadas: `${this.form.value.coordenadaX},${this.form.value.coordenadaY}`
     };
   }
 
   private setInitialValues(): void {
+    const coordenadas = this.cancha.coordenadas.split(',').map(Number);
     this.form.get('nombre').setValue(this.cancha.nombre);
     this.form.get('zona').setValue(this.cancha.zona);
     this.form.get('direccion').setValue(this.cancha.direccion);
     this.form.get('descripcion').setValue(this.cancha.descripcion);
-    this.form.get('img').setValue(this.cancha.img);
-    this.form.get('likes').setValue(this.cancha.likes);
+    this.form.get('img').setValue(this.cancha.imgUrl);
+    // this.form.get('likes').setValue(this.cancha.likes);
     this.form.get('precio').setValue(this.cancha.precio);
-    this.form.get('coordenadaX').setValue(this.cancha.coordenadas[0]);
-    this.form.get('coordenadaY').setValue(this.cancha.coordenadas[1]);
+    this.form.get('coordenadaX').setValue(coordenadas[0]);
+    this.form.get('coordenadaY').setValue(coordenadas[1]);
   }
 
 }

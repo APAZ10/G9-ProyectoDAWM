@@ -4,8 +4,8 @@ export interface Cancha {
     zona: string;
     descripcion: string;
     direccion: string;
-    img: string;
+    imgUrl: string;
     likes: number;
     precio: number;
-    coordenadas: [x: number, y: number]
+    coordenadas: string;
 }

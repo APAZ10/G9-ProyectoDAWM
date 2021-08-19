@@ -22,6 +22,18 @@ module.exports = function(sequelize, DataTypes) {
     zona: {
       type: DataTypes.STRING(45),
       allowNull: true
+    },
+    direccion: {
+      type: DataTypes.STRING(250),
+      allowNull: true
+    },
+    imgUrl: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    },
+    coordenadas: {
+      type: DataTypes.STRING(250),
+      allowNull: true
     }
   }, {
     sequelize,
