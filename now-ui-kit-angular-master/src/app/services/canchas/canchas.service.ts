@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cancha } from 'app/interfaces/cancha';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
+import { LikeService } from '../like/like.service';
 
 @Injectable({
   providedIn: 'root'
