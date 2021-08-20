@@ -1,3 +1,9 @@
+<div class="container">
+    <div class="row">
+        <h3 class="col-md-4 mt-4">Cancha</h3>
+    </div>
+</div>
+
 <div id="contenido">
     <div class="card edit-card">
         <div class="card-header">
@@ -80,6 +86,46 @@
             <div class="btn-container">
                 <button type="button" class="btn btn-primary" (click)="setCancha()">Guardar</button>
                 <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h3 class="col-md-4 mt-4">Comentarios</h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 px-3" *ngFor="let comentario of comentarios">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ comentario.cuenta.nombre }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ comentario.fecha }}</h6>
+                  <p class="card-text">{{ comentario.mensaje }}</p>
+                  <button type="button" class="btn btn-danger" (click)="eliminarComentario(comentario.id)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h3 class="col-md-4 mt-4">Likes</h3>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 px-3" *ngFor="let like of likes">
+            <div class="card" style="min-height: 0;">
+                <div class="card-body" style="min-height: 0;">
+                  <h6 class="card-subtitle mb-2 text-muted">{{ like.fecha }}</h6>
+                  <p class="card-text">{{ like.cuenta.nombre }}</p>
+                </div>
             </div>
         </div>
     </div>

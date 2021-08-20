@@ -1,9 +1,8 @@
-import { Persona } from "./persona";
-
 export interface Cuenta {
   id: string;
-  nombre: string;
+  usuario: string;
   correo: string;
   tipo: string;
-  persona: Persona;
+  nombre: string;
+  telefono: string;
 }

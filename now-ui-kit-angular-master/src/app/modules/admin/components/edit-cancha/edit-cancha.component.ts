@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cancha } from 'app/interfaces/cancha';
+import { Comentario } from 'app/interfaces/comentario';
+import { Like } from 'app/interfaces/like';
 import { CanchasService } from 'app/services/canchas/canchas.service';
+import { ComentarioService } from 'app/services/comentario/comentario.service';
+import { LikeService } from 'app/services/like/like.service';
 
 @Component({
   selector: 'app-edit-cancha',
@@ -12,11 +16,15 @@ import { CanchasService } from 'app/services/canchas/canchas.service';
 export class EditCanchaComponent implements OnInit {
   form: FormGroup;
   cancha: Cancha;
+  comentarios: Comentario[];
+  likes: Like[];
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private canchaService: CanchasService,
+    private likeService: LikeService,
+    private comentarioService: ComentarioService,
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
@@ -35,11 +43,29 @@ export class EditCanchaComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id != null && id != undefined) {
-      this.canchaService.get(id).subscribe(data => {
-        this.cancha = data;
-        this.setInitialValues();
-      });
+      this.fetchCanchas(id);
+      this.fetchComentarios(id);
+      this.fetchLikes(id);
     }
+  }
+
+  fetchCanchas(canchaId: string): void {
+    this.canchaService.get(canchaId).subscribe(data => {
+      this.cancha = data;
+      this.setInitialValues();
+    });
+  }
+
+  fetchComentarios(canchaId: string): void {
+    this.comentarioService.list(canchaId).subscribe(data => {
+      this.comentarios = data;
+    });
+  }
+
+  fetchLikes(canchaId: string): void {
+    this.likeService.list(canchaId).subscribe(data => {
+      this.likes = data;
+    });
   }
 
   setCancha(): void {
@@ -73,6 +99,12 @@ export class EditCanchaComponent implements OnInit {
       precio: parseFloat(this.form.value.precio),
       coordenadas: `${this.form.value.coordenadaX},${this.form.value.coordenadaY}`
     };
+  }
+
+  eliminarComentario(id: string): void {
+    this.comentarioService.delete(id).subscribe(response => {
+      this.fetchComentarios(this.cancha.id);
+    });
   }
 
   private setInitialValues(): void {

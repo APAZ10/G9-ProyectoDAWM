@@ -19,10 +19,24 @@ router.get('/', function(req, res, next) {
   .catch(error => res.status(400).send(error))
 });
 
-router.get('/:canchaId', function(req, res, next) {
+router.get('/cuenta/:canchaId', function(req, res, next) {
+  models.likes.findAll({
+      include: [{ model: models.canchas }],
+      attributes: { exclude: ["canchas_id"] },
+      where: {
+        canchas_id: req.params.canchaId
+      }
+  })
+  .then(likes => {
+      res.json(likes)
+  })
+  .catch(error => res.status(400).send(error))
+});
+
+router.get('/cancha/:canchaId', function(req, res, next) {
     models.likes.findAll({
-        include: [{ model: models.canchas }, { model: models.cuentas }],
-        attributes: { exclude: ["canchas_id", "cuentas_id"] },
+        include: [{ model: models.cuentas }],
+        attributes: { exclude: ["cuentas_id"] },
         where: {
           canchas_id: req.params.canchaId
         }

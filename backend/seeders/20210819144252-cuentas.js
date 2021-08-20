@@ -4,41 +4,46 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const cuentas = [
       {
-        "nombre": "xpgarcia",
+        "usuario": "xpgarcia",
         "clave": "xpgarcia",
         "correo": "xpgarcia@espol.edu.ec",
         "tipo": "administrador",
-        "personas_id": 1
+        "nombre": "Xavier García",
+        "telefono": "0992859362"
       },
       {
-        "nombre": "garciaxa",
+        "usuario": "garciaxa",
         "clave": "garciaxa",
         "correo": "garciaxa@espol.edu.ec",
         "tipo": "usuario",
-        "personas_id": 2
+        "nombre": "Patricio Baño",
+        "telefono": "0992849062"
       },
       {
-        "nombre": "mrcheems",
+        "usuario": "mrcheems",
         "clave": "mrcheems",
         "correo": "mrcheems@espol.edu.ec",
         "tipo": "usuario",
-        "personas_id": 3
+        "nombre": "José Delgado",
+        "telefono": "0989569362"
       },
       {
-        "nombre": "tester",
+        "usuario": "tester",
         "clave": "tester",
         "correo": "tester@espol.edu.ec",
         "tipo": "administrador",
-        "personas_id": 4
+        "nombre": "Testing Tester",
+        "telefono": "0992851236"
       }
     ];
     for (let cuenta of cuentas) {
       await queryInterface.bulkInsert('Cuentas', [{
-        nombre: cuenta.nombre,
+        usuario: cuenta.usuario,
         clave: cuenta.clave,
         correo: cuenta.correo,
         tipo: cuenta.tipo,
-        personas_id: cuenta.personas_id
+        nombre: cuenta.nombre,
+        telefono: cuenta.telefono
       }], {});
     }
   },

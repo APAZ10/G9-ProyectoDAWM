@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
 }
 
 .edit-card {
@@ -13,6 +12,10 @@
 .btn-container {
     display: flex;
     justify-content: center;
+}
+
+.comentario-card {
+    padding: 0 5px 0 5px;
 }
 
 @media screen and (max-width: 1000px) {

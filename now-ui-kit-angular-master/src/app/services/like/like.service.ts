@@ -14,7 +14,7 @@ export class LikeService {
   ) { }
 
   list(canchaId: string): Observable<Like[]> {
-    return this.http.get<Like[]>(`${environment.datababe_url}/likes/${canchaId}`);
+    return this.http.get<Like[]>(`${environment.datababe_url}/likes/cancha/${canchaId}`);
   }
 
   /*

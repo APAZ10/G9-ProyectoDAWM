@@ -10,8 +10,8 @@ models.comentarios.belongsTo(models.cuentas, {foreignKey: 'cuentas_id', targetKe
 /* GET users listing. */
 router.get('/cancha/:canchaId', function(req, res, next) {
     models.comentarios.findAll({
-        include: [{ model: models.canchas }, { model: models.cuentas }],
-        attributes: { exclude: ["canchas_id", "cuentas_id"] },
+        include: [{ model: models.cuentas }],
+        attributes: { exclude: ["cuentas_id"] },
         where: {
           canchas_id: req.params.canchaId
         }
@@ -24,8 +24,8 @@ router.get('/cancha/:canchaId', function(req, res, next) {
 
 router.get('/cuenta/:cuentaId', function(req, res, next) {
   models.comentarios.findAll({
-      include: [{ model: models.canchas }, { model: models.cuentas }],
-      attributes: { exclude: ["canchas_id", "cuentas_id"] },
+      include: [{ model: models.canchas }],
+      attributes: { exclude: ["canchas_id"] },
       where: {
         cuentas_id: req.params.cuentaId
       }
