@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cancha } from 'app/interfaces/cancha';
 import { CanchasService } from 'app/services/canchas/canchas.service';
+import { LikeService } from 'app/services/like/like.service';
 import * as d3 from 'd3';
 
 @Component({
@@ -16,18 +17,38 @@ export class BarComponent implements OnInit {
   private height = 500 - (this.margin * 2);
 
   constructor(
-    private canchaService: CanchasService
+    private canchaService: CanchasService,
+    private likeService: LikeService
   ) { }
 
   ngOnInit(): void {
-    this.fetchCanchas();
+    this.startDraw();
   }
 
-  private fetchCanchas(): void {
-    this.canchaService.list().subscribe(data => {
-      this.data = data;
-      this.createSvg();
-      this.drawBars(this.data);
+  private async startDraw(): Promise<void> {
+    await this.fetchCanchas();
+    this.createSvg();
+    this.drawBars(this.data);
+  }
+
+  private async fetchCanchas(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.canchaService.list().subscribe(async data => {
+        this.data = data;
+        for (let cancha of this.data) {
+          await this.fetchLikes(cancha);
+        }
+        resolve();
+      });
+    });
+  }
+
+  private fetchLikes(cancha: Cancha): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.likeService.list(cancha.id).subscribe(data => {
+        cancha.likes = data.length;
+        resolve();
+      });
     });
   }
 
@@ -57,7 +78,7 @@ export class BarComponent implements OnInit {
 
     // Create the Y-axis band scale
     const y = d3.scaleLinear()
-    .domain([0, 100])
+    .domain([0, 20])
     .range([this.height, 0]);
 
     // Draw the Y-axis on the DOM

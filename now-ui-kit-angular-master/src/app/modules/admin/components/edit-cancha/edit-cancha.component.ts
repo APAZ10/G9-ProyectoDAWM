@@ -16,8 +16,8 @@ import { LikeService } from 'app/services/like/like.service';
 export class EditCanchaComponent implements OnInit {
   form: FormGroup;
   cancha: Cancha;
-  comentarios: Comentario[];
-  likes: Like[];
+  comentarios: Comentario[] = [];
+  likes: Like[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,6 +65,7 @@ export class EditCanchaComponent implements OnInit {
   fetchLikes(canchaId: string): void {
     this.likeService.list(canchaId).subscribe(data => {
       this.likes = data;
+      this.cancha.likes = this.likes.length;
     });
   }
 
