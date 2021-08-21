@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "brosv1dv7z",
+    "password": null,
     "database": "futfinder",
     "host": "127.0.0.1",
     "dialect": "mysql"
