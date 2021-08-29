@@ -29,6 +29,24 @@ router.get('/:cuentaId', function(req, res, next) {
     .catch(error => res.status(400).send(error))
 });
 
+router.get('/validate', function(req, res, next) {
+  models.cuentas.findOne({
+      attributes: { exclude: ["clave"] },
+      where: {
+          usuario: req.body.usuario,
+          clave: req.body.clave
+      }
+  })
+  .then(cuenta => {
+      if(cuenta.tipo=="administrador"){
+        res.status(300).send({redirect:"/admin"})
+      }else{
+        res.status(300).send({redirect:"/"})
+      }
+  })
+  .catch(error => res.status(400).send(error))
+});
+
 router.post('/add', function(req, res, next) {
   var cuenta = req.body;
   models.cuentas.create({
