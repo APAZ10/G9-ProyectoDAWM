@@ -14,6 +14,7 @@ import { ClienteLayoutComponent } from './layouts/cliente-layout/cliente-layout.
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { CanchaModule } from './modules/cancha/cancha.module';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
         NavbarComponent,
         ClienteLayoutComponent,
         AdminLayoutComponent,
-        LoginComponent
+        LoginComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserAnimationsModule,
