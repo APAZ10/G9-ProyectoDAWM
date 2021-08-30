@@ -14,5 +14,6 @@ const config = {
 mongoose.connect(db_path, config)
     .then(() => console.log('DB connnection successful!'))
     .catch(err => {
+        console.log(err)
         console.error.bind(console, 'MongoDB connection error:')
     });

@@ -24,6 +24,23 @@ module.exports = {
     },
 
     /**
+     * comentariosController.getComments()
+     */
+     getComments: function (req, res) {
+        var id = req.params.id;
+        ComentariosModel.find({idCancha: id},function (err, comentarioss) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting comentarios.',
+                    error: err
+                });
+            }
+
+            return res.json(comentarioss);
+        });
+    },
+
+    /**
      * comentariosController.show()
      */
     show: function (req, res) {

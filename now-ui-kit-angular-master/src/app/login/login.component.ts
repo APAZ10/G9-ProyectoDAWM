@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       let valorClave = (<HTMLInputElement>(document.getElementById("clave"))).value
 
       this.loginService.authenticate(valorUser, valorClave).subscribe(data => {
-        console.log(data["redirect"])
         this.router.navigate([data["redirect"]]);
       });
     });
