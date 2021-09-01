@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   authenticate(usuario: string, clave: string): Observable<Cuenta> {
-    return this.http.post<Cuenta>(`${environment.datababe_url}/usuarios/validate`, {"usuario": usuario, "clave":clave});
+    return this.http.post<Cuenta>(`${environment.datababe_url}/usuarios/validate`, {"usuario": usuario, "clave":clave}, {withCredentials: true});
   }
 
 }

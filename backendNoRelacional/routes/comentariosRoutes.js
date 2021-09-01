@@ -10,7 +10,7 @@ router.get('/', comentariosController.list);
 /*
  * GET
  */
-router.get('/canchas/:id', comentariosController.getComments);
+router.get('/canchas/:id&:idUsuario', comentariosController.getComments);
 
 /*
  * GET

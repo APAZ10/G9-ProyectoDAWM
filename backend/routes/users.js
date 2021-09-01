@@ -27,20 +27,21 @@ router.post('/validate', function (req, res, next) {
     .then(cuenta => {
       //req.session.usuario = cuenta.usuario;
       //req.session.nombre = cuenta.nombre;
-      //console.log(req.session.usuario)
-      //console.log(req.session.nombre)
-      //res.cookie('usuario',cuenta.usuario , {expire : new Date() + 9999});
-      //res.cookie('nombre',cuenta.nombre , {expire : new Date() + 9999});
+      res.cookie('idUsuario',cuenta.id , {expire : new Date() + 9999});
+      res.cookie('nombre',cuenta.nombre , {expire : new Date() + 9999});
       if (cuenta.tipo === "administrador") {
         res.send({ redirect: "/admin" })
-      } else {
+      } else if(cuenta.tipo === "usuario") {
         res.send({ redirect: "/" })
       }
       //req.session = null;
       //res.cookie('usuario', '', {expires: new Date(0)});
+      //res.cookie('nombre', '', {expires: new Date(0)});
 
     })
-    .catch(error => res.status(400).send(error))
+    .catch(error => {
+      res.status(400).send(error)
+    })
 });
 
 router.get('/:cuentaId', function (req, res, next) {

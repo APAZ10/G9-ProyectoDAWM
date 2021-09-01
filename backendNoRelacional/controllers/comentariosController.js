@@ -28,7 +28,8 @@ module.exports = {
      */
      getComments: function (req, res) {
         var id = req.params.id;
-        ComentariosModel.find({idCancha: id},function (err, comentarioss) {
+        var idUsuario = req.params.idUsuario;
+        ComentariosModel.find({idCancha: id, idCuenta:idUsuario},function (err, comentarioss) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting comentarios.',
