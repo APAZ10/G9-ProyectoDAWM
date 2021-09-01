@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { CanchaModule } from './modules/cancha/cancha.module';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MessageService } from './services/message/message.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,7 @@ import { ProfileComponent } from './components/profile/profile.component';
         CanchaModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

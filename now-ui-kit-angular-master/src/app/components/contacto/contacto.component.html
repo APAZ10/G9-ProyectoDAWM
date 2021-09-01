@@ -12,7 +12,7 @@
     </div>
     <div class="section section-contact-us text-center">
         <div class="container">
-          <form> 
+          <form (ngSubmit)="contactForm(form.value)" #form="ngForm"> 
             <h2 class="title">¿Tienes alguna duda?</h2>
             <p class="description">Déjanos un mensaje y te contestaremos lo más pronto posible</p>
             <div class="row justify-content-center">
@@ -21,7 +21,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="text" value="" placeholder="Nombre" class="form-control"/>
+                  <input type="text" name="Nombre" value="" placeholder="Nombre" class="form-control" ngModel/>
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <select name="Genero" id="" class="form-control">
+                  <select name="Genero" id="genero" class="form-control" ngModel>
                     <option value=""></option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
@@ -46,7 +46,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <select name="Origen" id="" class="form-control">
+                  <select name="Origen" id="origen" class="form-control" ngModel>
                     <option value=""></option>
                     <option value="Masculino">Guayaquil</option>
                     <option value="Femenino">Quito</option>
@@ -61,7 +61,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="date" value="" placeholder="Fecha de nacimiento" class="form-control"/>
+                  <input type="date" name="Fecha" value="" placeholder="Fecha de nacimiento" class="form-control" ngModel/>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="tel" value="" placeholder="Celular" class="form-control"/>
+                  <input type="tel" name="Celular" value="" placeholder="Celular" class="form-control" ngModel/>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="text" value="" placeholder="Correo" class="form-control"/>
+                  <input type="text" name="Correo" value="" placeholder="Correo" class="form-control" ngModel/>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <textarea class="form-control area-borders" rows="4" cols="80" placeholder="Escribe el mensaje..."></textarea>
+                  <textarea name="Detalles" class="form-control area-borders" rows="4" cols="80" placeholder="Escribe el mensaje..." ngModel></textarea>
                 </div>
               </div>
             </div>

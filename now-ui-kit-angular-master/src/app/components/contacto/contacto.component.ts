@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'app/services/message/message.service';
 import * as Rellax from 'rellax';
 
 @Component({
@@ -11,7 +12,14 @@ export class ContactoComponent implements OnInit {
   focus;
   focus1;
 
-  constructor() { }
+  constructor(public _MessageService: MessageService) { }
+
+  contactForm(form) {
+    this._MessageService.sendMessage(form).subscribe(() => {
+      console.log(form)
+      location.reload();
+    });
+    }
 
   ngOnInit() {
     // var rellaxHeader = new Rellax('.rellax-header');
@@ -85,9 +93,9 @@ export class ContactoComponent implements OnInit {
       location.reload();
     });
 
-    enviarBtn.addEventListener('click',()=>{
+    /*enviarBtn.addEventListener('click',()=>{
       location.reload();
-    });
+    });*/
 
   }
   
