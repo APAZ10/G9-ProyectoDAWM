@@ -6,30 +6,59 @@ var initModels = require("../models/init-models");
 var models = initModels(sequelize);
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    models.cuentas.findAll({
-        attributes: { exclude: ["clave"] }
-    })
+router.get('/', function (req, res, next) {
+  models.cuentas.findAll({
+    attributes: { exclude: ["clave"] }
+  })
     .then(cuentas => {
-        res.json(cuentas)
+      res.json(cuentas)
     })
     .catch(error => res.status(400).send(error))
 });
 
-router.get('/:cuentaId', function(req, res, next) {
-    models.cuentas.findOne({
-        attributes: { exclude: ["clave"] },
-        where: {
-            id: req.params.cuentaId
-        }
-    })
+router.post('/validate', function (req, res, next) {
+  models.cuentas.findOne({
+    attributes: {},
+    where: {
+      usuario: req.body.usuario,
+      clave: req.body.clave
+    }
+  })
     .then(cuenta => {
-        res.json(cuenta)
+      //req.session.usuario = cuenta.usuario;
+      //req.session.nombre = cuenta.nombre;
+      //console.log(req.session.usuario)
+      //console.log(req.session.nombre)
+      //res.cookie('usuario',cuenta.usuario , {expire : new Date() + 9999});
+      //res.cookie('nombre',cuenta.nombre , {expire : new Date() + 9999});
+      if (cuenta.tipo === "administrador") {
+        res.send({ redirect: "/admin" })
+      } else {
+        res.send({ redirect: "/" })
+      }
+      //req.session = null;
+      //res.cookie('usuario', '', {expires: new Date(0)});
+
     })
     .catch(error => res.status(400).send(error))
 });
 
-router.post('/add', function(req, res, next) {
+router.get('/:cuentaId', function (req, res, next) {
+  models.cuentas.findOne({
+    attributes: { exclude: ["clave"] },
+    where: {
+      id: req.params.cuentaId
+    }
+  })
+    .then(cuenta => {
+      res.json(cuenta)
+    })
+    .catch(error => res.status(400).send(error))
+});
+
+
+
+router.post('/add', function (req, res, next) {
   var cuenta = req.body;
   models.cuentas.create({
     usuario: cuenta.usuario,
@@ -45,7 +74,7 @@ router.post('/add', function(req, res, next) {
     .catch(error => res.status(400).send(error))
 });
 
-router.patch('/:cuentaId', function(req, res, next) {
+router.patch('/:cuentaId', function (req, res, next) {
   var cuenta = req.body;
   models.cuentas.update({
     usuario: cuenta.usuario,
@@ -64,12 +93,12 @@ router.patch('/:cuentaId', function(req, res, next) {
     .catch(error => res.status(400).send(error))
 });
 
-router.delete('/:cuentaId', function(req, res, next) {
+router.delete('/:cuentaId', function (req, res, next) {
   models.comentarios.destroy({
-      where: {
-        id: req.params.cuentaId
-      }
-    })
+    where: {
+      id: req.params.cuentaId
+    }
+  })
     .then(response => {
       res.json(response)
     })

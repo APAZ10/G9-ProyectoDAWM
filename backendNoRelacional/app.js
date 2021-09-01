@@ -6,31 +6,21 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var canchasRouter = require('./routes/canchas');
-var likesRouter = require('./routes/likes');
-var comentariosRouter = require('./routes/comentarios');
+var comentariosRouter = require('./routes/comentariosRoutes')
 var cors = require('cors')
 
 var app = express();
+const nodb = require("./models")
 
 app.use(cors())
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({
-    name: 'session',
-    keys: ['futfinderProyect'],
-    // Cookie Options
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/usuarios', usersRouter);
-app.use('/canchas', canchasRouter);
-app.use('/likes', likesRouter);
+app.use('/users', usersRouter);
 app.use('/comentarios', comentariosRouter);
 
 module.exports = app;
