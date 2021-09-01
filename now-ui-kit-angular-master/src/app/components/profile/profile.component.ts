@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,7 @@ import * as Rellax from 'rellax';
 })
 export class ProfileComponent implements OnInit {
 
-    constructor() { }
+    constructor(private cookieService: CookieService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -16,6 +17,10 @@ export class ProfileComponent implements OnInit {
       body.classList.add('profile-page');
       var navbar = document.getElementsByTagName('nav')[0];
       navbar.classList.add('navbar-transparent');
+
+      let nombreField = document.getElementById("nombre")
+      console.log(this.cookieService.get('nombre'))
+      nombreField.innerHTML = this.cookieService.get('nombre')
       
       //Fetch del selector
       fetch("http://localhost:3001/canchas")
@@ -35,7 +40,8 @@ export class ProfileComponent implements OnInit {
       let selector = document.getElementById("inputSelect");
       selector.addEventListener('change', (event) => {
         let valor = (<HTMLInputElement>(selector)).value;
-        fetch("http://localhost:3002/comentarios/canchas/"+valor)
+        let idCuenta = this.cookieService.get('idUsuario')
+        fetch("http://localhost:3002/comentarios/canchas/"+valor+"&"+idCuenta)
           .then(response => response.json())
           .then(comentarios => {
             let tabla = document.getElementById("table_body")
