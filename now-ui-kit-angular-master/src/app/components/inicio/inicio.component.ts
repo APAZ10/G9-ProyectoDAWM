@@ -1,5 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbAccordionConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Cancha } from 'app/interfaces/cancha';
+import { CanchasService } from 'app/services/canchas/canchas.service';
+import { LikeService } from 'app/services/like/like.service';
 import * as introJs from 'intro.js/intro.js';
 
 @Component({
@@ -28,12 +31,18 @@ export class InicioComponent implements OnInit {
       }
   ]
 
+  canchas: Cancha[] = [];
   canchasPopular: any[] = []
   canchasNorte: any[] = []
   canchasSur: any[] = []
   canchasCentro: any[] = []
 
-  constructor( private renderer : Renderer2, config: NgbAccordionConfig) {
+  constructor(
+    private renderer : Renderer2,
+    config: NgbAccordionConfig,
+    private canchaService: CanchasService,
+    private likeService: LikeService
+  ) {
       config.closeOthers = true;
       config.type = 'info';
       if(window.innerWidth>=992){
@@ -83,6 +92,7 @@ export class InicioComponent implements OnInit {
       body.classList.add('index-page');
       this.introJS.start();
       /*Agregando las canchas*/
+      /*
       fetch("../../../assets/data/canchas.json")
       .then(response => response.json())
       .then(data => {
@@ -104,6 +114,8 @@ export class InicioComponent implements OnInit {
         }
       })
       .catch(console.error);
+      */
+      this.initData();
   }
   
   ngOnDestroy(){
@@ -111,6 +123,46 @@ export class InicioComponent implements OnInit {
       navbar.classList.remove('navbar-transparent');
       var body = document.getElementsByTagName('body')[0];
       body.classList.remove('index-page');
+  }
+
+  private async initData(): Promise<void> {
+    await this.fetchCanchas();
+  }
+
+  private fetchCanchas(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.canchaService.list().subscribe(async canchas => {
+        for (let cancha of canchas) {
+          await this.fetchLikes(cancha);
+          this.locateCancha(cancha);
+        }
+        this.canchas = canchas;
+        resolve();
+      });
+    });
+  }
+
+  private fetchLikes(cancha: Cancha): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.likeService.list(cancha.id).subscribe(likes => {
+        cancha.likes = likes.length;
+        resolve();
+      });
+    });
+  }
+
+  private locateCancha(cancha: Cancha): void {
+    let datos = {nombre: cancha.nombre, url: cancha.imgUrl, id: cancha.id};
+    if(cancha.likes > 3){
+      this.canchasPopular.push(datos);
+    }
+    if(cancha.zona.toLocaleLowerCase() === "norte"){
+      this.canchasNorte.push(datos);
+    }else if(cancha.zona.toLocaleLowerCase() === "centro"){
+      this.canchasCentro.push(datos);
+    }else if(cancha.zona.toLocaleLowerCase() === "sur"){
+      this.canchasSur.push(datos);
+    }
   }
 
 }

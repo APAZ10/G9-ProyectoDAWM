@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cancha } from 'app/interfaces/cancha';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input()
+  cancha: Cancha;
+
   constructor() { }
 
   ngOnInit(): void {
+    /*
     fetch("../../../assets/data/canchas.json")
       .then(response => response.json())
       .then(data => {
@@ -26,6 +31,7 @@ export class HeaderComponent implements OnInit {
         }
       })
       .catch(console.error);
+    */
   }
 
 }
