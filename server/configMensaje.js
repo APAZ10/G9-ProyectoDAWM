@@ -1,18 +1,17 @@
 const nodemailer = require('nodemailer');
 module.exports = (formulario) => {
  var transporter = nodemailer.createTransport({
- host:"Godaddy",
- port:3535,
- secure:false,
+ host:"smtp.gmail.com",
+ port: 465,
+ secure:true,
  auth: {
- type:"login",
- user: 'lfreire99.lf@gmail.com', // Cambialo por tu email
- pass: 'gpq91899' // Cambialo por tu password
+ user: 'futfinder2021@gmail.com', // Cambialo por tu email
+ pass: 'futFinder!2021' // Cambialo por tu password
  }
  });
 const mailOptions = {
  from: `"${formulario.Nombre}" <${formulario.Correo}>`,
- to: 'kevinbautistazarate2000@gmail.com', // Cambia esta parte por el destinatario
+ to: 'alejandropaz98.ap@gmail.com', // Cambia esta parte por el destinatario
  subject: "Prueba",
  html: `
  <strong>Nombre:</strong> ${formulario.Nombre} <br/>
