@@ -15,6 +15,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { AuthGuard } from './auth.guard';
+import { AuthUserGuard } from './auth-user.guard';
+
 const routes: Routes =[
     {
         path: '',
@@ -27,7 +30,8 @@ const routes: Routes =[
             },
             {
                 path: 'perfil',
-                component: ProfileComponent
+                component: ProfileComponent,
+                canActivate:[AuthUserGuard]
             },
             {
                 path: 'contacto',
@@ -59,7 +63,8 @@ const routes: Routes =[
                 path: '',
                 loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
             }
-        ]
+        ],
+        canActivate:[AuthGuard]
     },
     {
         path: '**',

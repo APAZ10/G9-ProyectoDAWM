@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'app/auth.guard';
+import { AuthUserGuard } from 'app/auth-user.guard';
 
 @Component({
     selector: 'app-navbar',
@@ -12,34 +14,39 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
+    condicionAdmin: boolean;
+    condicionUser: boolean;
+    condicionNologgeado: boolean;
+
     constructor(public location: Location, private element: ElementRef, private cookieService: CookieService,
-        private router: Router) {
+        private router: Router, public authAdmin: AuthGuard, public authUser: AuthUserGuard) {
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-
-        /*<a class="nav-link" [routerLink]="['login']">
-                    <p>Login</p>
-                </a>*/
-        let idCuenta = this.cookieService.get('idUsuario')
-        if (idCuenta !== "") {
-            let navItem = document.getElementById("nav5")
-            navItem.innerHTML = `<a class="nav-link" ng-reflect-router-link="perfil" href="/perfil">
-                                    <p>Perfil</p>
-                                 </a>`
-            let navBar = document.getElementById("navbarlist")
-            navBar.innerHTML += `<li class="nav-item" id="nav6">
-                                    <input type="submit" class="btn btn-primary btn-round btn-lg btn-block" value="Log Out" id="btnLogOut">
-                                </li>`
-            document.getElementById("btnLogOut").addEventListener('click', () => {
-                this.cookieService.set('nombre', "");
-                this.cookieService.set('idUsuario', ""); 
-                this.router.navigate(["/login"]);
-            });
+        this.condicionUser= this.cookieService.get("tipo")=="usuario";
+        this.condicionNologgeado=this.cookieService.get("tipo")=="" || this.cookieService.get("tipo")=="undefined";
+        console.log(this.condicionNologgeado)
+        console.log(this.condicionUser)
+        if(this.condicionUser){
+            document.getElementById("nav7").classList.remove("d-none")
+            document.getElementById("nav6").classList.remove("d-none")
+            document.getElementById("nav5").classList.add("d-none")
         }
+        if(this.condicionNologgeado){
+            document.getElementById("nav7").classList.add("d-none")
+            document.getElementById("nav6").classList.add("d-none")
+            document.getElementById("nav5").classList.remove("d-none")
+        }
+        document.getElementById("nav6").addEventListener('click', () => {
+            console.log("entro")
+            this.cookieService.set('nombre', "");
+            this.cookieService.set('idUsuario', "");
+            this.cookieService.set('tipo', ""); 
+            this.router.navigate(["/login"]);
+        });
     }
 
     sidebarOpen() {

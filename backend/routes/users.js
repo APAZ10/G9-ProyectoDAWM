@@ -29,6 +29,7 @@ router.post('/validate', function (req, res, next) {
       //req.session.nombre = cuenta.nombre;
       res.cookie('idUsuario',cuenta.id , {expire : new Date() + 9999});
       res.cookie('nombre',cuenta.nombre , {expire : new Date() + 9999});
+      res.cookie('tipo',cuenta.tipo , {expire : new Date() + 9999});
       if (cuenta.tipo === "administrador") {
         res.send({ redirect: "/admin" })
       } else if(cuenta.tipo === "usuario") {
