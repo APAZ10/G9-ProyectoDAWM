@@ -11,7 +11,8 @@ import { LikeService } from '../like/like.service';
 export class CanchasService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private likeService: LikeService
   ) { }
 
   list(): Observable<Cancha[]> {

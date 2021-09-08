@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit} from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import { Cancha } from 'app/interfaces/cancha';
 import * as L from 'leaflet';
 
 /*const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
@@ -26,8 +27,12 @@ L.Marker.prototype.options.icon = iconDefault;*/
 
 export class MapComponent implements OnInit, AfterViewInit {
 
+  @Input()
+  cancha: Cancha;
+  
   private map;
 
+  /*
   private initMap(): void {
     fetch("../../../assets/data/canchas.json")
     .then(response => response.json())
@@ -55,6 +60,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
     .catch(console.error);
   }
+  */
 
   constructor() {
     //console.log(' pathname => ' + window.location.pathname);
@@ -64,6 +70,25 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initMap();
+    // this.initMap();
+    this.initData();
+  }
+
+  private initData(): void {
+    const lon = this.cancha.coordenadas.split(',')[0];
+    const lat = this.cancha.coordenadas.split(',')[1];
+    this.map = L.map('map', {
+      center: [ lon, lat ],
+      zoom: 17
+    });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      minZoom: 14,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    tiles.addTo(this.map);
+    var marker=L.marker([lon, lat]).addTo(this.map);
+    var popup=marker.bindPopup("<b>Es aqui!</b>");
+    popup.openPopup();
   }
 }
